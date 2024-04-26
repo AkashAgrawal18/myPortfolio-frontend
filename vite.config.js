@@ -4,9 +4,17 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-proxy:{
-  '/api' : 'https://myportfolio-backend-e0rb.onrender.com'
-}
+    proxy: {
+      '/api': {
+        target: 'https://myportfolio-backend-e0rb.onrender.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
-  plugins: [react()],
+  plugins: [
+    // VitePWA(manifestForPlugin),
+    react(),
+  ],
 })
+

@@ -53,8 +53,7 @@ const Login = () => {
 
         <section className="signIn py-5 bg-dark">
             <div className="signupdiv">
-                <div className="row py-5">
-
+                <div className="row py-5 d-flex flex-column-reverse flex-md-row">
                     <div className="col-12 col-lg-6 text-center ">
                         <figure><img src="images/signin-image.jpg" alt="sing up image" /></figure>
                         <Link to="/signup" className="signup-image-link text-dark">Create an Account</Link>
@@ -63,7 +62,7 @@ const Login = () => {
                     <div className="col-12 col-lg-6 signup-form p-3 text-center">
                         <h2 className="form-title mb-4 fw-bold fs-2">Sign In</h2>
 
-                        <form method="POST" onSubmit={handleSubmit(login)} className="register-form px-5" id="register-form">
+                        <form method="POST" onSubmit={handleSubmit(login)} className="register-form px-2 px-md-5" id="register-form">
 
                             <Input
                                 type="email"

@@ -12,8 +12,8 @@ const Experience = () => {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [modalShow, setModalShow] = useState(false)
-    const [modalData, setModalData] = useState({ title:"", msg:"", status:"",btnText:"",btnText2:"",btn2func:""})
-   
+    const [modalData, setModalData] = useState({ title: "", msg: "", status: "", btnText: "", btnText2: "", btn2func: "" })
+
     // console.log(experienceId)
     useEffect(() => {
         getReq('users/current-user').then((postdata) => {
@@ -46,13 +46,13 @@ const Experience = () => {
     return !loading ? (
         <div className='py-8'>
             <Container>
-                <div className='row py-5'>
+                <div className='row py-5  d-flex flex-column-reverse flex-md-row'>
 
                     <h4 className='text-white'> My Experience List</h4>
                     <div className="col-12 col-md-6 experienceListDiv">
                         {
                             posts.length > 0 ? (
-                                <div className="row w-100 text-center">
+                                <div className="row g-0 g-md-3 w-100 text-center">
                                     {posts.map((item, index) => {
                                         return (
 

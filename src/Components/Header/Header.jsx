@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { LogoutBtn } from '../index'
 
 const Header = () => {
@@ -20,22 +20,22 @@ const Header = () => {
       slug: '/edit-profile',
       active: authStatus,
     },
-  
+
     {
       name: 'Education',
       slug: '/education',
       active: authStatus,
-    }, 
+    },
     {
       name: 'Experience',
       slug: '/experience',
       active: authStatus,
-    }, 
+    },
     {
       name: 'Project',
       slug: '/project',
       active: authStatus,
-    }, 
+    },
     {
       name: 'Resume',
       slug: '/resume',
@@ -46,45 +46,29 @@ const Header = () => {
 
   return (
 
-    <Navbar expand="lg" className="navhad sticky-top">
-      <Container fluid>
-        <Navbar.Brand >Myportfolio</Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-lg`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
-          placement="end"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-              Myportfolio
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
+    <Navbar collapseOnSelect expand="lg" className="navhad sticky-top">
+      <Container>
+        <Navbar.Brand href="#home">Myportfolio</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav" className='flex-none'>
+          <Nav className="me-auto">
+            {navItems.map((item) => item.active ? (
+              <NavLink key={item.name} to={item.slug} className='nav-link'>{item.name}</NavLink>
+            ) : null)}
 
-              {navItems.map((item) => item.active ? (
-                <li key={item.name} className='nav-link' onClick={() => navigate(item.slug)}>
-                  {item.name}
-                </li>
-              ) : null)}
+            {/* <Nav.Link href={item.slug}>Pricing</Nav.Link> */}
 
-            </Nav>
+          </Nav>
+          {authStatus ? (
 
-            {authStatus ? (
+            <LogoutBtn />
 
-              <LogoutBtn />
+          ) : <Link to='/login' variant="outline-success" className='btn loginbtn rounded-4 d-lg-inline-block '>Login</Link>}
 
-            ) : <Link to='/login' variant="outline-success" className='btn loginbtn rounded-4 d-lg-inline-block '>Login</Link>}
-
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
-
-
-    
-
+   
   )
 }
 

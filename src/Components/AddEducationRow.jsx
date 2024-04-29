@@ -71,7 +71,7 @@ export default function AddEducationRow() {
             <div className="card mb-3 darkcard" key={index}>
               <div className="card-body">
                 <div className="input_container" key={index}>
-                  <div className="row g-3">
+                  <div className="row g-1 g-md-3">
                     <div className="col-6 text-white">
                       <InputCheck
                         label="Is Present"

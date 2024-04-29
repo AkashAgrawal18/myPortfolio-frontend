@@ -53,7 +53,7 @@ function Signup() {
                     <div className="col-12 col-lg-6 signup-form p-3 text-center">
                         <h2 className="form-title mb-4 fw-bold fs-2">Sign Up</h2>
 
-                        <form method="POST" onSubmit={handleSubmit(create)} className="register-form px-5" id="register-form">
+                        <form method="POST" onSubmit={handleSubmit(create)} className="register-form px-2 px-md-5" id="register-form">
 
                             <Input
                                 placeholder="Enter your full name"

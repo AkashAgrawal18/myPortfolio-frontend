@@ -142,7 +142,7 @@ const EditProfile = () => {
 
     return !loading ? (
         <form onSubmit={handleSubmit(submit)} className="form">
-            <div className="row flex-lg-nowrap bg-dark p-5 w-100">
+            <div className="row g-0 g-md-3 flex-lg-nowrap bg-dark p-2 p-md-5 w-100">
                 <div className="col-12 col-md-3 mb-3">
                     <div className="card mb-3 bg-light">
                         <div className="card-body">

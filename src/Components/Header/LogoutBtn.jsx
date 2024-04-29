@@ -22,7 +22,7 @@ const LogoutBtn = () => {
   return (<>
     <button onClick={() => {
       setModalShow(true)
-    }} className='btn loginbtn rounded-4 d-lg-inline-block d-none'>Logout</button>
+    }} className='btn loginbtn rounded-4 d-lg-inline-block'>Logout</button>
     <ModalDialog
       title="Are You Sure?"
       status="warning"

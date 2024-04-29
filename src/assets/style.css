@@ -44,21 +44,26 @@
 }
 
 .navhad,
-.offcanvas-header,
-.offcanvas-body,
 .mfooter {
   background-color: var(--bg-fnblue);
   color: var(--bg-white);
-  padding: 10px;
+  padding: 2px;
 }
 
-
-.nav-link,
 .navbar-brand {
+  font-size: xx-large;
+  color: var(--bg-white);
+}
+.nav-link{
+  font-size: large;
   color: var(--bg-white);
 }
 
-.nav-link:hover {
+.nav-link:hover ,.navbar-brand:hover{
+  color: var(--bg-blue);
+}
+
+.navbar-nav .nav-link:active , .navbar-nav .nav-link.active {
   color: var(--bg-blue);
 }
 
@@ -105,6 +110,7 @@
 
 @media (max-width: 400px) {
 
+  
   .btn-close {
     /* color: #fff; */
     background-color: #fff;

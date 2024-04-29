@@ -44,7 +44,9 @@ const Resume = () => {
                     setUserData(userProData)
                 }
             })
-            .finally(() => setLoading(false));
+            .finally(() => {setLoading(false)
+                setTimeout(window.print(), 3000);
+                 });
         // console.log(userData)
     }, [userNameId,currentuserData])
 

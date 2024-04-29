@@ -17,11 +17,12 @@ function Footer() {
                 <div className="col-xl-3 col-lg-3 col-md-4 col-12">
                     <h3 className="mb-xl-4 mb-lg-4 mb-3 text-warning fw-semibold mt-lg-4 mt-0 text-uppercase">QUICK LINKS</h3>
                     <ul className="list-unstyled ps-2 d-flex flex-column gap-xl-3 gap-lg-4 gap-3">
-                        <Link to="/about" ><li><span className="text-white fs-6 text-decoration-none">About Us</span></li></Link>
-                        <Link to="/booking" ><li><span className="text-white fs-6 text-decoration-none">Booking</span></li></Link>
-                        <Link to="/faq" ><li><span className="text-white fs-6 text-decoration-none">FAQs</span></li></Link>
-                        <Link to="/" ><li><span className="text-white fs-6 text-decoration-none">Account</span></li></Link>
-                        <Link to="/contact_us" ><li><span className="text-white fs-6 text-decoration-none">Contact</span></li></Link>
+                        <Link to="/" ><li><span className="text-white fs-6 text-decoration-none">About Us</span></li></Link>
+                        <Link to="/login" ><li><span className="text-white fs-6 text-decoration-none">Login</span></li></Link>
+                        {/* <Link to="/booking" ><li><span className="text-white fs-6 text-decoration-none">Booking</span></li></Link> */}
+                        {/* <Link to="/faq" ><li><span className="text-white fs-6 text-decoration-none">FAQs</span></li></Link> */}
+                        {/* <Link to="/" ><li><span className="text-white fs-6 text-decoration-none">Account</span></li></Link> */}
+                        {/* <Link to="/contact_us" ><li><span className="text-white fs-6 text-decoration-none">Contact</span></li></Link> */}
                     </ul>
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-6 col-12">

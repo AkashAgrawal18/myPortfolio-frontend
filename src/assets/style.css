@@ -103,7 +103,24 @@
   background-repeat: no-repeat !important
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
+
+  .btn-close {
+    /* color: #fff; */
+    background-color: #fff;
+  }
+  .loginbtn {
+    background-color: transparent;
+    color: #fff;
+    padding: 0;
+  }
+
+  .loginbtn:hover {
+    background-color: transparent;
+    color: #fff;
+  
+  }
+  
   .login-main>section.login-container {
     background-size: 130% !important;
     background-position: 0% -1% !important;

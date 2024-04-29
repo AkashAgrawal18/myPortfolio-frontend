@@ -75,7 +75,7 @@ const Header = () => {
 
               <LogoutBtn />
 
-            ) : <Link to='/login' variant="outline-success" className='btn loginbtn rounded-4 d-lg-inline-block d-none'>Login</Link>}
+            ) : <Link to='/login' variant="outline-success" className='btn loginbtn rounded-4 d-lg-inline-block '>Login</Link>}
 
           </Offcanvas.Body>
         </Navbar.Offcanvas>

@@ -17,8 +17,8 @@ function App() {
       .then((neData) => {
         if (neData.success == true) {
           // console.log(neData);
-         const userData = neData.data;
-          dispatch(login({ userData }))
+        //  const userData = neData.data;
+          dispatch(login(neData.data))
         } else {
           dispatch(logout())
         }

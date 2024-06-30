@@ -11,11 +11,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './assets/style.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Signup from './pages/Signup'
-import Resume from './pages/Resume.jsx'
+// import Resume from './pages/Resume.jsx'
 import Project from './pages/Project.jsx'
 import Education from './pages/Education.jsx'
 import Experience from './pages/Experience.jsx'
 import PortFollioSite from './pages/PortFollioSite.jsx'
+import DownloadPDF from './Components/DownloadPDF.jsx'
 // import EditPost from "./pages/EditPost";
 
 // import Post from "./pages/Post";
@@ -108,7 +109,7 @@ const router = createBrowserRouter([
             element: (
                 <AuthLayout authentication>
                     {" "}
-                    <Resume />
+                    <DownloadPDF />
                 </AuthLayout>
             ),
         },
@@ -123,30 +124,30 @@ const router = createBrowserRouter([
         // },
       
     ],
-}, 
- {
-    path: "/user-resume/:userName",
-    element: (
-        <AuthLayout authentication={false}>
-            {" "}
-            <Resume />
-        </AuthLayout>
-    ),
 },{
     path: "/user-profile/:userName",
     element: (
-        <AuthLayout authentication={false}>
-            {" "}
+        // <AuthLayout authentication={false}>
+        //     {" "}
             <PortFollioSite />
-        </AuthLayout>
+        // </AuthLayout>
     ),
-},
+}, 
+{
+   path: "/user-resume/:userName",
+   element: (
+    //    <AuthLayout authentication={false}>
+        //    {" "}
+           <DownloadPDF />
+    //    </AuthLayout>
+   ),
+}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+//   <React.StrictMode>
     <Provider store={store}>
     <RouterProvider router={router}/>
     </Provider>
-   </React.StrictMode>,
+//    </React.StrictMode>,
 )

@@ -16,38 +16,36 @@ const Login = () => {
     const [modalShow, setModalShow] = useState(false)
     const [modalData, setModalData] = useState({ title: "", msg: "", status: ""})
    
+   
+        
     const login = async (data) => {
-       
         try {
-            const session = await authService.login(data)
-            // console.log(session);
-            if (session.data.success == true) {
-                const usData = await getReq('users/current-user')
-                // console.log(usData);
-                if (usData.success == true) {
-                    dispatch(authLogin(usData.data));
-                    setModalData({title:'Login Success',msg:usData.message || 'Login Successfully',status:'success'});
-                    setModalShow(true);
-                    setTimeout(function() {
-                        navigate("/")
-                      }, 1000);
-                   
-                }
-            }else {
-                setModalData({title:'Error',msg:session.data.message || 'Somthing Went Worng',status:'error'});
-                setModalShow(true);
-                setTimeout(function() {
-                    setModalShow(false);
-                  }, 4000);
+            const session = await authService.login(data);
+            
+            if (session.data.success) {
+                const usData = await getReq('users/current-user');
                 
+                if (usData.success) {
+                    dispatch(authLogin(usData.data));
+                    setModalData({ title: 'Login Success', msg: usData.message || 'Login Successfully', status: 'success' });
+                    setModalShow(true);
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 1000);
+                    return;
+                }
             }
+            
+            // Handle authentication or user data retrieval failure
+            throw new Error(session.data.message || 'Something went wrong');
+            
         } catch (error) {
-            // console.log(error);
+            // Handle errors from authService.login or getReq
+            console.error('Login error:', error);
+            setModalData({ title: 'Error', msg: error.message || 'Something went wrong', status: 'error' });
             setModalShow(true);
-            setModalData({title:'Error',msg:session.data.message || 'Somthing Went Worng',status:'error'});
-           
         }
-    }
+    };
 
     return (
 

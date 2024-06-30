@@ -1,8 +1,13 @@
 // import React, {useEffect, useState} from 'react'
 // import appwriteService from "../appwrite/config";
+
+// import { useSelector } from 'react-redux';
 import AllPost from './AllPost'
 
 function Home() {
+
+    // const currentuserData = useSelector((state) => state.auth.userData);
+    //  console.log(currentuserData);
     // const [posts, setPosts] = useState([])
 
     // useEffect(() => {

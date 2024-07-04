@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import authService from "../apis/auth.js";
+import { getReq } from "../apis/auth.js";
 import { useSelector } from 'react-redux';
 import { serverUserImage } from '../imageUrl.js';
 import { Link, useParams } from 'react-router-dom';
@@ -37,20 +37,24 @@ const Resume = () => {
         } else {
             setUserNameId(currentuserData?.username);
         }
-        authService.getUserProfile(userNameId)
+
+        getReq('users/detail', {
+            params: {
+                username: userNameId
+            }
+        })
             .then((neData) => {
-                if (neData) {
-                    const userProData = neData.data.data;
+                if (neData.success) {
+                    const userProData = neData.data;
                     setUserData(userProData)
                 }
             })
-            .finally(() => {setLoading(false)
+            .finally(() => {
+                setLoading(false)
                 // setTimeout(window.print(), 3000);
-                 });
-        // console.log(userData)
-    }, [userNameId,currentuserData])
+            });
 
-
+    }, [userNameId, currentuserData])
 
     return !loading ? (
 
@@ -78,7 +82,7 @@ const Resume = () => {
                                         <ul className="list-unstyled mb-4">
 
                                             {userData.skills?.map((skillitm) => (
-                                                <li className="mb-2">
+                                                <li className="mb-2" key={skillitm._id}>
                                                     <div className="resume-skill-name">{skillitm.title}</div>
                                                     <div className="progress resume-progress">
                                                         <div className="progress-bar theme-progress-bar-dark" role="progressbar"
@@ -95,7 +99,7 @@ const Resume = () => {
                                         <h4 className="resume-skills-cat fw-bold">Soft Skills</h4>
                                         <ul className="list-inline">
                                             {userData.softSkills?.map((softskl) => (
-                                                <li className="list-inline-item"><span className="badge badge-light">{softskl}</span>
+                                                <li className="list-inline-item" key={softskl}><span className="badge badge-light">{softskl}</span>
                                                 </li>
                                             ))}
 
@@ -126,7 +130,7 @@ const Resume = () => {
                                     <ul className="list-unstyled resume-lang-list">
                                         {
                                             userData.language && userData.language.map((item) => {
-                                                return (<li className="list-inline-item"><span className="badge badge-light">{item}</span></li>)
+                                                return (<li className="list-inline-item" key={item}><span className="badge badge-light">{item}</span></li>)
                                             })
                                         }
 
@@ -163,7 +167,7 @@ const Resume = () => {
                                     </div>
                                     <div className="col-5">
                                         <ul className="resume-social list-unstyled mt-4 pt-2">
-                                            {userData.social?.map((item, index) => <Link to='#' onClick={() => window.open(`https://${item.link}`,'_blank')}  className='text-decoration-none text-dark'><li key={index} className="mb-1"><i className={`bi bi-${item.title.toLowerCase()} me-2`}></i>{item.link}</li></Link>)}
+                                            {userData.social?.map((item, index) => <Link to='#' onClick={() => window.open(`https://${item.link}`, '_blank')} className='text-decoration-none text-dark' key={index}><li className="mb-1"><i className={`bi bi-${item.title.toLowerCase()} me-2`}></i>{item.link}</li></Link>)}
 
                                         </ul>
                                     </div>
@@ -188,7 +192,7 @@ const Resume = () => {
                                 <div className="resume-section-content">
                                     <div className="resume-timeline position-relative">
                                         {userData.experience?.map((item) => (
-                                            <article className="resume-timeline-item position-relative pb-0" key={item.id}>
+                                            <article className="resume-timeline-item position-relative pb-0" key={item._id}>
 
                                                 <div className="resume-timeline-item-header mb-1">
                                                     <div className="d-flex flex-column flex-md-row justify-content-between align-items-baseline">
@@ -202,7 +206,7 @@ const Resume = () => {
                                                 </div>
                                                 <div className="resume-timeline-item-desc">
                                                     <ul className='mb-1'>
-                                                        {item.description?.map((des) => <li className='resum-par' key={des.id}>{des.points}</li>)}
+                                                        {item.description?.map((des, index) => <li className='resum-par' key={index}>{des.points}</li>)}
                                                     </ul>
                                                 </div>
 
@@ -221,7 +225,7 @@ const Resume = () => {
                                 <div className="resume-section-content">
                                     <div className="resume-timeline position-relative">
                                         {userData.education?.map((item) => (
-                                            <article className="resume-timeline-item position-relative pb-0" key={item.id}>
+                                            <article className="resume-timeline-item position-relative pb-0" key={item._id}>
 
                                                 <div className="resume-timeline-item-header mb-1">
                                                     <div className="d-flex flex-column flex-md-row justify-content-between align-items-baseline">
@@ -232,7 +236,7 @@ const Resume = () => {
 
                                                 </div>
                                                 <div className="resume-company-name ml-auto">
-                                                <i className="bi bi-mortarboard-fill"></i> {item.universityName} <i className="bi bi-geo-alt-fill ms-2"></i>{item.universityLocation}
+                                                    <i className="bi bi-mortarboard-fill"></i> {item.universityName} <i className="bi bi-geo-alt-fill ms-2"></i>{item.universityLocation}
                                                 </div>
                                                 <div className="resume-timeline-item-desc">
                                                     <p className='resum-par'> {item.description} </p>

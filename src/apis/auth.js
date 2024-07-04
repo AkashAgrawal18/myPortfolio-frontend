@@ -125,15 +125,15 @@ export class AuthService {
     //     return null;
     // }
 
-    async getAllProject() {
+    // async getAllProject() {
 
-        try {
-            return await axios.get('/api/v1/project/all')
-        } catch (error) {
-            console.log("Apis Service :: getAllProject :: error", error);
-        }
+    //     try {
+    //         return await axios.get('/api/v1/project/all')
+    //     } catch (error) {
+    //         console.log("Apis Service :: getAllProject :: error", error);
+    //     }
 
-    }
+    // }
 
     async logout() {
         try {
@@ -144,49 +144,49 @@ export class AuthService {
 
     }
 
-    async getUserProfile(username) {
+    // async getUserProfile(username) {
 
-        try {
-            return await axios.get('/api/v1/users/detail', {
-                params: {
-                    username: username
-                }
-            })
+    //     try {
+    //         return await axios.get('/api/v1/users/detail', {
+    //             params: {
+    //                 username: username
+    //             }
+    //         })
 
-        } catch (error) {
-            console.log("Apis Service :: getUserProfile :: error", error);
-        }
+    //     } catch (error) {
+    //         console.log("Apis Service :: getUserProfile :: error", error);
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
-    async myProject() {
+    // async myProject() {
 
-        try {
-            return await axios.get('/api/v1/project/')
+    //     try {
+    //         return await axios.get('/api/v1/project/')
 
-        } catch (error) {
-            console.log("Apis Service :: myProject :: error", error);
-        }
+    //     } catch (error) {
+    //         console.log("Apis Service :: myProject :: error", error);
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
-    async getProjectDetail(projectId) {
-        // console.log(data)
-        try {
-            return await axios.get('/api/v1/project/detail/', {
-                params: {
-                    projectId: projectId
-                }
-            })
+    // async getProjectDetail(projectId) {
+    //     // console.log(data)
+    //     try {
+    //         return await axios.get('/api/v1/project/detail/', {
+    //             params: {
+    //                 projectId: projectId
+    //             }
+    //         })
 
-        } catch (error) {
-            console.log("Apis Service :: getProjectDetail :: error", error);
-        }
+    //     } catch (error) {
+    //         console.log("Apis Service :: getProjectDetail :: error", error);
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
     async addProject(data) {
         try {
@@ -270,6 +270,7 @@ export class AuthService {
 
         return null;
     }
+
     async updateExperience(id, title, startOn, exitOn, companyLocation, companyName, designation, description, isCurrent) {
         let compeDate = "";
         if (exitOn == "Invalid Date" || exitOn == "1970-01-01" || exitOn == null) {
@@ -287,6 +288,7 @@ export class AuthService {
 
         return null;
     }
+    
     async addExperience(title, startOn, exitOn, companyLocation, companyName, designation, description, isCurrent) {
 
         let compeDate = "";

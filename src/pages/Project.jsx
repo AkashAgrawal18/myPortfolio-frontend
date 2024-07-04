@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Container, PostCard, PostForm } from '../Components'
-import authService from "../apis/auth.js";
+import { getReq } from "../apis/auth.js";
 import { useParams } from 'react-router-dom';
 import { serverProjectImage } from '../imageUrl.js';
 function Project() {
@@ -9,12 +9,16 @@ function Project() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    authService.myProject().then((postdata) => {
-      if (postdata) {
-        setPosts(postdata.data.data)
-      }
-    }).finally(() => setLoading(false));
-  }, [])
+
+    getReq('project/')
+      .then((neData) => {
+          if (neData.success) {
+             setPosts(neData.data)
+          }
+      })
+      .finally(() => setLoading(false));
+   
+  }, [posts])
 
   // console.log(ProjectId)
   return !loading ? (

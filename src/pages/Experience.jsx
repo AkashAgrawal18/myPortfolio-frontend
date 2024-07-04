@@ -21,23 +21,22 @@ const Experience = () => {
                 setPosts(postdata.data.experience)
             }
         }).finally(() => setLoading(false));
-    }, [])
+    }, [posts])
 
 
     const deleteExperience = useCallback(
         (Id) => () => {
 
-            deleteReq("users/experience", {
-                params: {
-                    Id: Id
-                }
-            }).then((data) => {
-                if (data.success) {
-                    window.location.reload(false);
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
+            deleteReq("users/experience", { params: { Id } })
+                .then((data) => {
+                    if (data.success) {
+                        // window.location.reload(false);
+                        setPosts(posts.filter(post => post._id !== Id));
+                        setModalShow(false)
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
 
         },
         [],

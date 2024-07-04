@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Button, Input } from ".";
-import authService from "../apis/auth.js";
+import authService, { getReq } from "../apis/auth.js";
 import { useNavigate } from "react-router-dom";
 import InputCheck from "./InputCheck.jsx";
 
@@ -12,23 +12,28 @@ export default function ExperienceForm({ experienceId }) {
     // console.log(experienceId)
     useEffect(() => {
         if (experienceId != '' && experienceId != undefined && experienceId != null) {
-            authService.getExperienceDetail(experienceId).then((apidata) => {
-                if (apidata) {
-                    setPost(apidata.data.data[0])
-                } else {
-                    setPost({})
 
+            getReq('users/experience', {
+                params: {
+                    Id: experienceId
                 }
-            }).finally(() => setLoading(false))
+            })
+                .then((neData) => {
+                    if (neData.success) {
+                        setPost(neData.data[0])
+                    } else {
+                        setPost({})
+                    }
+                })
+                .finally(() => setLoading(false));
+
         } else {
             setPost({})
             setLoading(false)
         }
     }, [experienceId])
 
-
-
-    const { register, handleSubmit, formState: { errors }, setValue, control, getValues } = useForm({
+    const { register, handleSubmit, formState: { errors }, setValue, control, getValues,reset } = useForm({
         values: {
             title: post?.title || "",
             startOn: new Date(post?.startOn).toLocaleDateString('fr-CA') || "",
@@ -46,20 +51,52 @@ export default function ExperienceForm({ experienceId }) {
     const navigate = useNavigate();
 
 
+    // const submit = async (data) => {
+    //     if (post?._id) {
+    //         const dbPost = await authService.updateExperience(post._id, data.title, data.startOn, data.exitOn, data.companyLocation, data.companyName, data.designation, data.description, data.isCurrent);
+    //         if (dbPost) {
+    //             window.location.reload(false);
+    //             // navigate(`/experience`);
+    //         }
+    //     } else {
+    //         const dbPost = await authService.addExperience(data.title, data.startOn, data.exitOn, data.companyLocation, data.companyName, data.designation, data.description, data.isCurrent);
+    //         if (dbPost) {
+    //             window.location.reload(false);
+    //             // navigate(`/experience`);
+    //         }
+
+    //     }
+    // };
+
     const submit = async (data) => {
-        if (post?._id) {
-            const dbPost = await authService.updateExperience(post._id, data.title, data.startOn, data.exitOn, data.companyLocation, data.companyName, data.designation, data.description, data.isCurrent);
-            if (dbPost) {
-                window.location.reload(false);
-                // navigate(`/experience`);
-            }
-        } else {
-            const dbPost = await authService.addExperience(data.title, data.startOn, data.exitOn, data.companyLocation, data.companyName, data.designation, data.description, data.isCurrent);
-            if (dbPost) {
-                window.location.reload(false);
-                // navigate(`/experience`);
+        try {
+            let dbPost;
+            if (post?._id) {
+                dbPost = await authService.updateExperience(post._id, data.title, data.startOn, data.exitOn, data.companyLocation, data.companyName, data.designation, data.description, data.isCurrent);
+            } else {
+                dbPost = await authService.addExperience(data.title, data.startOn, data.exitOn, data.companyLocation, data.companyName, data.designation, data.description, data.isCurrent);
             }
 
+            if (dbPost) {
+                // Assuming authService methods return what you expect (e.g., updated post or ID)
+                // Consider using your preferred method for navigation instead of reloading
+                // window.location.reload(false); // or 
+                reset({
+                    title: "",
+                    startOn: "",
+                    exitOn: "",
+                    companyLocation: "",
+                    companyName: "",
+                    designation: "",
+                    description: [{ points: '' }],
+                    isCurrent: false
+                });
+                navigate('.', { replace: true })
+            } else {
+                console.error('Failed to update/add experience.'); // Handle error or log
+            }
+        } catch (error) {
+            console.error('Error submitting data:', error); // Handle specific errors if needed
         }
     };
 
@@ -78,7 +115,7 @@ export default function ExperienceForm({ experienceId }) {
                 <div className="card-body">
                     {!post?._id ? (<h4>Add New Experience</h4>) : (<h4>Edit Experience Details</h4>)}
                     <div className="row g-3">
-                        
+
                         <div className="col-12 col-md-6 text-white">
                             <Input
                                 label="Start On"
@@ -90,7 +127,7 @@ export default function ExperienceForm({ experienceId }) {
                                 error={errors?.startOn?.message}
                             />
                         </div>
-                       {!post?.isCurrent && <div className="col-6 col-md-4 text-white">
+                        {!post?.isCurrent && <div className="col-6 col-md-4 text-white">
                             <Input
                                 label="Exit On"
                                 type="date"
@@ -108,7 +145,7 @@ export default function ExperienceForm({ experienceId }) {
                                 className=""
                                 type="checkbox"
                                 {...register(`isCurrent`)}
-                                onClick={() => {setPost({...post,isCurrent:!post.isCurrent})}}
+                                onClick={() => { setPost({ ...post, isCurrent: !post.isCurrent }) }}
                             />
 
                         </div>

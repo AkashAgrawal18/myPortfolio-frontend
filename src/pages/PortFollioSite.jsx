@@ -3,7 +3,7 @@ import '../assets/webview.css';
 import HNavbar from '../Components/FrontSite/HNavbar';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import authService from "../apis/auth.js";
+import { getReq } from "../apis/auth.js";
 import { serverUserImage } from '../imageUrl.js';
 import { dateMMYYYY } from '../utills/dateFormat.js';
 
@@ -40,15 +40,20 @@ const PortFollioSite = () => {
         } else {
             setUserNameId(currentuserData?.username);
         }
-        authService.getUserProfile(userNameId)
+
+        getReq('users/detail', {
+            params: {
+                username: userNameId
+            }
+        })
             .then((neData) => {
-                if (neData) {
-                    const userProData = neData.data.data;
+                if (neData.success == true) {
+                    const userProData = neData.data;
                     setUserData(userProData)
                 }
             })
             .finally(() => setLoading(false));
-        // console.log(userData)
+
     }, [userNameId, currentuserData])
 
 
@@ -99,7 +104,7 @@ const PortFollioSite = () => {
                     <div className="row py-3">
                         {userData.skills?.map((skillitm) => (
 
-                            <div className="col-md-6">
+                            <div className="col-md-6" key={skillitm._id}>
                                 <div className="px-lg-3">
                                     <div className="progress-wrapper wow fadeInUp" style={{ visibility: "visible", animationName: "fadeInUp" }} >
                                         <div className='d-flex justify-content-between'>
@@ -129,7 +134,7 @@ const PortFollioSite = () => {
                             <ul className="timeline mt-4 pr-md-5">
                                 {userData.education?.map((item) => (
 
-                                    <li key={item.id}>
+                                    <li key={item._id}>
                                         <div className="title">{dateMMYYYY(item.startOn)} - {dateMMYYYY(item.completedOn)}</div>
                                         <div className="details">
                                             <h5>{`${item.degree}`}</h5>
@@ -148,7 +153,7 @@ const PortFollioSite = () => {
 
                                 {userData.experience?.map((item) => (
 
-                                    <li key={item.id}>
+                                    <li key={item._id}>
                                         <div className="title">{dateMMYYYY(item.startOn)} - {dateMMYYYY(item.exitOn)}</div>
                                         <div className="details">
                                             <h5>{`${item.designation} ${item.title}`}</h5>
@@ -460,7 +465,7 @@ const PortFollioSite = () => {
                         <div className="col-md-12">
                             <div className="contact_form">
                                 <div id="message"></div>
-                                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                                <form id="contactForm" name="sentMessage">
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">

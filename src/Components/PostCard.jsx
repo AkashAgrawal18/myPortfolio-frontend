@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { serverUserImage } from '../imageUrl';
 import Button from './Button';
 import ModalDialog from './ModalDialog';
+import { deleteReq } from '../apis/auth';
 
 function PostCard({ id, title, image, shortDesc, owner, domain, created_at, status }) {
 
@@ -24,19 +25,21 @@ function PostCard({ id, title, image, shortDesc, owner, domain, created_at, stat
 
   const deleteProject = useCallback(
     (Id) => () => {
-      alert(Id)
-      // deleteReq("users/experience", {
-      //     params: {
-      //         Id: Id
-      //     }
-      // }).then((data) => {
-      //     if (data.success) {
-      //         window.location.reload(false);
-      //     }
-      // }).catch((err) => {
-      //     console.log(err);
-      // })
-
+      // alert(Id)
+      deleteReq("project/detail", {
+          params: {
+              Id: Id
+          }
+      }).then((data) => {
+          if (data.success) {
+            navigate('.', { replace: true })
+              // window.location.reload(false);
+          }
+      }).catch((err) => {
+          console.log(err);
+      })
+    
+      setModalShow(false)
     },
     [],
   )

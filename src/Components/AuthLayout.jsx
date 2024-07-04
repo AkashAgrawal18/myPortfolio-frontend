@@ -16,5 +16,7 @@ export default function Protected({children, authentication = true}) {
         setLoader(false);
     },[authStatus,navigate,authentication])
 
-  return loader ? <h1>Loading...</h1> : <>{children}</>
+  return loader ? <div className='loadingdiv'>
+  <h1 className='text-white p-5'>Loading...</h1>
+    </div> : <>{children}</>
 }

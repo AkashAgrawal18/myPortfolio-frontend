@@ -48,7 +48,7 @@ const Header = () => {
 
     <Navbar collapseOnSelect expand="lg" className="navhad sticky-top">
       <Container>
-        <Navbar.Brand href="#home">Myportfolio</Navbar.Brand>
+        <Navbar.Brand to="/">Myportfolio</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className='flex-none'>
           <Nav className="me-auto">

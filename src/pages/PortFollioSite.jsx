@@ -272,7 +272,7 @@ const PortFollioSite = () => {
                     <div className="gridder my-3" style={{ position: "relative", height: "570.976px" }}>
 
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -281,7 +281,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -290,7 +290,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -299,7 +299,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -308,7 +308,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -317,7 +317,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -326,7 +326,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -335,7 +335,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>
@@ -344,7 +344,7 @@ const PortFollioSite = () => {
                             </div>
                         </div>
                         <div className="grid-item apps wow zoomIn" style={{ visibility: "visible", animationName: "zoomIn" }}>
-                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 class='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
+                            <div className="img-place" data-src="images/signin2.jpg" data-fancybox="" data-caption="<h5 className='fg-theme'>Mobile Travel App</h5> <p>Travel, Discovery</p>">
                                 <img src="images/signin2.jpg" alt="" />
                                 <div className="img-caption">
                                     <h5 className="fg-theme">Mobile Travel App</h5>

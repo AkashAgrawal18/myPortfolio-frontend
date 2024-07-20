@@ -18,7 +18,7 @@ function Project() {
       })
       .finally(() => setLoading(false));
    
-  }, [posts])
+  }, [])
 
   // console.log(ProjectId)
   return !loading ? (

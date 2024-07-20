@@ -21,7 +21,7 @@ const Experience = () => {
                 setPosts(postdata.data.experience)
             }
         }).finally(() => setLoading(false));
-    }, [posts])
+    }, [])
 
 
     const deleteExperience = useCallback(
